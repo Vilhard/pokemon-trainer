@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
-
+import { User } from '../../models/user.model'
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,12 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginService.fetchUser(1);
+    this.loginService.fetchById(1);
+    this.loginService.addUser('jukka');
+  }
+
+  get user(): User {
+    return this.loginService.getUser()
   }
 
 }
