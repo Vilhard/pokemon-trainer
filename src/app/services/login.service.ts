@@ -44,8 +44,12 @@ export class LoginService {
 		});
 
 		this.http.post<User>(this._apiUrl+'/trainers', body, httpOptions)
-		.subscribe(data => {
-			this._user.id = data.id
+		.subscribe((data: User) => {
+			this._user = {
+				id: data.id,
+				username: data.username,
+				pokemon: data.pokemon
+			}
 		}, (error: HttpErrorResponse) => {
 			this._error = error.message;
 		});
