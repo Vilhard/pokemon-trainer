@@ -15,16 +15,19 @@ export class PokemonsService {
 	}
 
 	public fetchPokemons(): void {
-		this.http.get('https://pokeapi.co/api/v2/pokemon')
-			.subscribe((pokemons) => {
-				 this.pokemons = pokemons;
-			}, (error: HttpErrorResponse) => {
-				this.error = error.message;
-			});
+		if(sessionStorage.getItem("pokemons")){ 
+			return this.pokemons = JSON.parse(sessionStorage.getItem("pokemons") || '{}');
+		} else {
+			this.http.get('https://pokeapi.co/api/v2/pokemon')
+				.subscribe((pokemons) => {
+					 this.pokemons = pokemons;
+					sessionStorage.setItem('pokemons', JSON.stringify(this.pokemons))
+				}, (error: HttpErrorResponse) => {
+					this.error = error.message;
+				});
+		}
 	}
-
 	public getPokemons(): Pokemon[] {
-		console.log('fetch'+ JSON.stringify(this.pokemons.results))
-		return this.pokemons.results
+		return this.pokemons
 	}
 }

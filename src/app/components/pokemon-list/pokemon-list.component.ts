@@ -10,10 +10,20 @@ import { PokemonsService } from 'src/app/services/pokemons.service'
 export class PokemonListComponent {
     constructor(private readonly pokemonService: PokemonsService) { }
     ngOnInit(): void {
-        this.pokemonService.fetchPokemons();
+         this.pokemonService.fetchPokemons();
       }
       get pokemons(): Pokemon[] {
-          console.log(this.pokemonService)
           return this.pokemonService.getPokemons()
+      }
+      //TODO
+     public setAvatarToPokemons(pokemons: Pokemon[]) {
+         console.log("Tuleeko" + pokemons);
+        return pokemons.map((p, index) => {
+             return {
+                 ...p,
+                 id: index,
+                 avatar: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`
+             };
+         });
       }
 }
