@@ -12,6 +12,8 @@ import { PokemonListComponent } from './components/pokemon-list/pokemon-list.com
 import { PokemonListItemComponent } from './components/pokemon-list-item/pokemon-list-item.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { MatCardModule } from '@angular/material/card';
     TrainerPage,
     CataloguePage,
     PokemonListComponent,
-    PokemonListItemComponent
+    PokemonListItemComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     NoopAnimationsModule,
     MatCardModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
