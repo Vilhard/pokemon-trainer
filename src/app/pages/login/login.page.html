@@ -1,16 +1,19 @@
-<p>login works!</p>
-<h4>Testing fetch: {{ user.username }}</h4>
+<div class="container">
+	<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+		<fieldset>
+			<div class="form-group mb-2">
+				<label class="form-label" for="username">Create new trainer</label>
+				<input type="text" 
+					class="form-control"
+					id="username" 
+					name="username" 
+					required
+					ngModel #username="ngModel"/>
+			</div>
+			<button class="btn btn-primary mb-2" type="submit" [disabled] ="loginForm.invalid">Login</button>
+		</fieldset>
+	</form>
+</div>
 
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-	<fieldset>
-		<label for="username">Create new user</label>
-		<input type="text" 
-			id="username" 
-			name="username" 
-			required
-			ngModel #username="ngModel"/>
-	</fieldset>
-	<button type="submit" [disabled] ="loginForm.invalid">Login</button>
-</form>
-<button (click)="onLogoutClick()">Log out</button>
+
 

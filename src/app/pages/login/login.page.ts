@@ -31,8 +31,4 @@ export class LoginPage implements OnInit{
       await this.router.navigate(['trainer'])
     });
   }
-
-  public onLogoutClick(): void {
-    this.sessionService.logout()
-  }
 }
