@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { User } from '../../models/user.model'
 
@@ -8,13 +9,9 @@ import { User } from '../../models/user.model'
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.css']
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
-  constructor(private readonly loginService: LoginService) { 
-  }
-
-  ngOnInit(): void {
-    //this.loginService.fetchById(1);
+  constructor(private readonly router: Router, private readonly loginService: LoginService) { 
   }
 
   get user(): User {
@@ -22,6 +19,8 @@ export class LoginPage implements OnInit {
   }
 
   public onSubmit(loginForm: NgForm): void {
-    this.loginService.addUser(loginForm.value.username);
+    this.loginService.authenticate(loginForm.value.username, async () => {
+      await this.router.navigate(['trainer'])
+    });
   }
 }

@@ -1,7 +1,13 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http"
+import { HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http"
 import { Injectable } from "@angular/core"
 import { User } from "../models/user.model"
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from "src/environments/environment";
+import { Observable, of } from "rxjs";
+import { map, switchMap } from 'rxjs/operators';
+
+const API_URL = environment.baseURL
+const API_KEY = environment.API_KEY
 
 @Injectable({
 	providedIn: 'root'
@@ -15,26 +21,23 @@ export class LoginService {
 		pokemon: []
 	}
 	private _error: string = ''
-	private _apiUrl: string = 'https://noroff-assignment-api-frontend.herokuapp.com'
-	private _apiKey: string = 'sdfdflsdnfsdklnfoiruourpgklfldkjhtrhirhreghkglndfnbnfllkdfjhgerl'
 
 	constructor(private readonly http: HttpClient) {
 	}
 
-	public fetchById(id: number): void {
-		this.http.get<User>(this._apiUrl+'/trainers/'+id)
-			.subscribe(user => {
-				this._user = user
-			}, (error: HttpErrorResponse) => {
-				this._error = error.message;
-			});
+	public fetchByUsername(username: string): Observable<User[]> {
+		return this.http.get<User[]>(API_URL+'/trainers/?username='+username)
 	}
 
-	public addUser(username: string): void {
+	public fetchById(id: number): Observable<User> {
+		return this.http.get<User>(API_URL+'/trainers/'+id)
+	}
+
+	public addUser(username: string): Observable<User> {
 		const httpOptions = {
 			headers: new HttpHeaders({
 				'Content-Type': 'application/json',
-				'X-API-Key': this._apiKey
+				'X-API-Key': API_KEY
 			})
 		};
 
@@ -43,16 +46,7 @@ export class LoginService {
 			pokemon: [] 
 		});
 
-		this.http.post<User>(this._apiUrl+'/trainers', body, httpOptions)
-		.subscribe((data: User) => {
-			this._user = {
-				id: data.id,
-				username: data.username,
-				pokemon: data.pokemon
-			}
-		}, (error: HttpErrorResponse) => {
-			this._error = error.message;
-		});
+		return this.http.post<User>(API_URL+'/trainers', body, httpOptions)
 	}
 
 	public getUser(): User {
@@ -61,5 +55,30 @@ export class LoginService {
 
 	public getError(): string {
 		return this._error;
+	}
+
+	public authenticate(username: string, onSuccess: () => void): void {
+		// RxJS
+		// switchMap, map, retry, finalize, catch, throwError, tap
+
+		this.fetchByUsername(username)
+		.pipe(
+			switchMap((users: User[]) => {
+				if(users.length) {
+					return of(users[0])
+				}
+				return this.addUser(username)
+			})
+		)
+		.subscribe(
+			(user: User) => { // success
+				if(user.id) {
+					onSuccess();
+				}
+			},
+			(error: HttpErrorResponse) => { // error
+				this._error = error.message;
+			}
+		)
 	}
 }
