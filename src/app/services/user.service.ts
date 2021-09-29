@@ -14,7 +14,7 @@ const API_KEY = environment.API_KEY
 	providedIn: 'root'
 })
 
-export class LoginService {
+export class UserService {
 
 	private _user: User = {
 		id: null,
