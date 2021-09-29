@@ -1,0 +1,9 @@
+ul {
+  list-style-type: none;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
