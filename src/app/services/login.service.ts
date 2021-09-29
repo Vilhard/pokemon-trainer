@@ -5,6 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { environment } from "src/environments/environment";
 import { Observable, of } from "rxjs";
 import { map, switchMap } from 'rxjs/operators';
+import { SessionService } from 'src/app/services/session.service';
 
 const API_URL = environment.baseURL
 const API_KEY = environment.API_KEY
@@ -22,7 +23,7 @@ export class LoginService {
 	}
 	private _error: string = ''
 
-	constructor(private readonly http: HttpClient) {
+	constructor(private readonly http: HttpClient, private readonly sessionService: SessionService) {
 	}
 
 	public fetchByUsername(username: string): Observable<User[]> {
@@ -73,6 +74,7 @@ export class LoginService {
 		.subscribe(
 			(user: User) => { // success
 				if(user.id) {
+					this.sessionService.setUser(user);
 					onSuccess();
 				}
 			},

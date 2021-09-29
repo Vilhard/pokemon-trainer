@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services/session.service';
+import { User } from '../../models/user.model'
 
 @Component({
   selector: 'app-trainer',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainerPage implements OnInit {
 
-  constructor() { }
+  constructor(private readonly router: Router, private readonly sessionService: SessionService) { 
+  }
+
+  get user(): User | undefined{
+    return this.sessionService.user
+  }
 
   ngOnInit(): void {
+    if(this.user === undefined) {
+      this.router.navigate(['login'])
+    }
   }
 
 }
