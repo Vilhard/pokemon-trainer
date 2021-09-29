@@ -10,6 +10,8 @@ import { CataloguePage } from './pages/catalogue/catalogue.page';
 import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
+import { TrainerPokemonListComponent } from './components/trainer-pokemon-list/trainer-pokemon-list.component';
+import { TrainerPokemonListItemComponent } from './components/trainer-pokemon-list-item/trainer-pokemon-list-item.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { RouterModule } from '@angular/router';
     LoginPage,
     TrainerPage,
     CataloguePage,
-    NavBarComponent
+    NavBarComponent,
+    TrainerPokemonListComponent,
+    TrainerPokemonListItemComponent
   ],
   imports: [
     BrowserModule,

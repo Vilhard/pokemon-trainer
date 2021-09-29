@@ -1,8 +1,10 @@
 export interface Pokemon {
-	name: string;
-	url: string;
+  id: number | null;
+  name: string;
+  url: string;
+  avatar: string;
 }
 
 export interface PokemonResults {
-	pokemon: Pokemon
+  pokemon: Pokemon;
 }
