@@ -10,7 +10,7 @@ export class TrainerPokemonListItemComponent implements OnInit {
   @Input() pokemon: Pokemon | undefined;
 
   public onFreePokemonClicked(): void {
-    console.log('You have let the ' + this.pokemon + ' free');
+    console.log('You have let the ' + this.pokemon?.name + ' free');
   }
 
   constructor() {}
