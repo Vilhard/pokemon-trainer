@@ -5,3 +5,16 @@
     width: 8rem;
     box-shadow: 0 0 0.5rem 0.3rem rgba(0, 0, 0, 0.2);
 }
+
+.pokeball:hover {
+    opacity: 0.5;
+    filter: brightness(100%);
+}
+
+.greyedOut {
+    filter: brightness(30%);
+}
+
+.normal {
+    filter: brightness(100%);
+}

@@ -12,9 +12,16 @@ import { SessionService } from 'src/app/services/session.service';
 export class PokemonListItemComponent {
     @Input() pokemon!: Pokemon;
     @Input() index!: number; 
+    caught: boolean = false;
     
     constructor(private readonly userService: UserService,
         private readonly sessionService: SessionService) { }
+
+    ngOnInit(): void {
+        if(this.sessionService.user?.pokemon.find(x => x.id === this.pokemon.id) != undefined){
+            this.caught = true;
+        }
+    }
 
     get user(): User {
         return this.userService.getUser()
@@ -25,7 +32,7 @@ export class PokemonListItemComponent {
 
         if(this.sessionService.user !== undefined) {
             this.userService.updateUser(this.sessionService.user, async() => {
-                await console.log(this.sessionService.user)
+                await (this.caught = true);
             })
         }
 

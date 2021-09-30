@@ -4,9 +4,9 @@
         <mat-card-title>
             {{pokemon.name}}
         </mat-card-title>
-        <mat-card-content>
+        <mat-card-content [ngClass]="caught == false ? 'normal': 'greyedOut'">
             <img src="{{pokemon.avatar}}" />
-            <button class="btn btn-sm btn-outline-secondary" (click)="onCatchClick()">Catch</button>
+            <img class="pokeball" src="../../../assets/pokeball.png" (click)="onCatchClick()"/>
         </mat-card-content>
 </mat-card>
 </li>
