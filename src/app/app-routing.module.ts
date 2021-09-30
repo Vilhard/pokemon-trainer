@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'; // CLI imports router
+import { AuthGuard } from './auth.guard';
 import { CataloguePage } from './pages/catalogue/catalogue.page';
 import { LoginPage } from './pages/login/login.page';
 import { TrainerPage } from './pages/trainer/trainer.page';
@@ -16,11 +17,13 @@ const routes: Routes = [
 	},
 	{
 		path: 'trainer',
-		component: TrainerPage
+		component: TrainerPage,
+		canActivate: [AuthGuard]
 	},
 	{
 		path: 'catalogue',
-		component: CataloguePage
+		component: CataloguePage,
+		canActivate: [AuthGuard]
 	}
 ]; // sets up routes constant where you define your routes
 
