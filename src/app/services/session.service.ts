@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class SessionService {
-  private _user: User | undefined;
+	private _user: User | undefined;
 
   constructor(private readonly router: Router) {
     const storedUser = localStorage.getItem('user');

@@ -20,8 +20,5 @@ export class TrainerPage implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.user === undefined) {
-      this.router.navigate(['login']);
-    }
   }
 }

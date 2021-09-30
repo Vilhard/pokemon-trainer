@@ -20,6 +20,9 @@ export class LoginPage implements OnInit{
 
   ngOnInit(): void {
     console.log(this.sessionService.user)
+    if(this.sessionService.user !== undefined) {
+      this.router.navigate(['catalogue'])
+    }
   }
 
   get user(): User {
@@ -28,7 +31,7 @@ export class LoginPage implements OnInit{
 
   public onSubmit(loginForm: NgForm): void {
     this.userService.authenticate(loginForm.value.username, async () => {
-      await this.router.navigate(['trainer'])
+      await this.router.navigate(['catalogue'])
     });
   }
 }
