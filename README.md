@@ -19,6 +19,9 @@ This project is a Pokémon trainer web application created using Angular Framewo
 <br>
 [Trainers Api](https://noroff-assignment-api-frontend.herokuapp.com/trainers)
 
+### Components 
+[Component tree](https://github.com/miapeppi/pokemon-trainer/blob/main/pokemon_component_tree.pdf)
+
 ## Group composition
 - Ville Hotakainen
 - Peppi Mäkelä
