@@ -17,7 +17,6 @@ export class PokemonListComponent {
       }
       //TODO
      public setAvatarToPokemons(pokemons: Pokemon[]) {
-         console.log("Tuleeko" + pokemons);
         return pokemons.map((p, index) => {
              return {
                  ...p,

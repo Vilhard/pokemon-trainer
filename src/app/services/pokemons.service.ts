@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http"
 import { Injectable } from "@angular/core"
-import {  Pokemon } from "../models/pokemon.model"
+import {  Pokemon, PokemonArray } from "../models/pokemon.model"
 
 @Injectable({
 	providedIn: 'root'
@@ -18,10 +18,10 @@ export class PokemonsService {
 		if(sessionStorage.getItem("pokemons")){ 
 			return this.pokemons = JSON.parse(sessionStorage.getItem("pokemons") || '{}');
 		} else {
-			this.http.get('https://pokeapi.co/api/v2/pokemon')
+			this.http.get<PokemonArray>('https://pokeapi.co/api/v2/pokemon')
 				.subscribe((pokemons) => {
-					 this.pokemons = pokemons;
-					sessionStorage.setItem('pokemons', JSON.stringify(this.pokemons))
+					 this.pokemons = pokemons.results
+					 sessionStorage.setItem('pokemons', JSON.stringify(this.pokemons))
 				}, (error: HttpErrorResponse) => {
 					this.error = error.message;
 				});
