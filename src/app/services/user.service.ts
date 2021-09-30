@@ -53,6 +53,20 @@ export class UserService {
 
     return this.http.post<User>(API_URL + '/trainers', body, httpOptions);
   }
+  
+  public patchUser(user: User): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-API-Key': API_KEY,
+      }),
+    };
+
+    const body = JSON.stringify({
+      pokemon: user.pokemon,
+    });
+    return this.http.patch<User>(API_URL + '/trainers/'+user.id, body, httpOptions);
+  }
 
   public getUser(): User {
     return this._user;
@@ -62,10 +76,17 @@ export class UserService {
     return this._error;
   }
 
-  public authenticate(username: string, onSuccess: () => void): void {
-    // RxJS
-    // switchMap, map, retry, finalize, catch, throwError, tap
+  public updateUser(user: User, onSuccess: () => void): void {
+    this.patchUser(user)
+    .subscribe((user: User) => {
+      onSuccess();
+    }),
+    (error: HttpErrorResponse) => {
+      this._error = error.message;
+    }
+  }
 
+  public authenticate(username: string, onSuccess: () => void): void {
     this.fetchByUsername(username)
       .pipe(
         switchMap((users: User[]) => {
@@ -77,16 +98,14 @@ export class UserService {
       )
       .subscribe(
         (user: User) => {
-          // success
           if (user.id) {
             this.sessionService.setUser(user);
             onSuccess();
           }
         },
         (error: HttpErrorResponse) => {
-          // error
           this._error = error.message;
         }
       );
-  }
+    }
 }

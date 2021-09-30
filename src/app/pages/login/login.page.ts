@@ -19,7 +19,6 @@ export class LoginPage implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.sessionService.user)
     if(this.sessionService.user !== undefined) {
       this.router.navigate(['catalogue'])
     }

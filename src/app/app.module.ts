@@ -24,7 +24,7 @@ import { TrainerPokemonListItemComponent } from './components/trainer-pokemon-li
     TrainerPage,
     CataloguePage,
     TrainerPokemonListComponent,
-    TrainerPokemonListItemComponent
+    TrainerPokemonListItemComponent,
     PokemonListComponent,
     PokemonListItemComponent,
     NavBarComponent
