@@ -9,8 +9,4 @@ import { Pokemon } from "src/app/models/pokemon.model";
 export class PokemonListItemComponent {
     @Input() pokemon!: Pokemon;
     @Input() index!: number; 
-
-    setPokemonAvatar(id: number) {
-      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${ id }.png`
-  }
 }

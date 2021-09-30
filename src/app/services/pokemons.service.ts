@@ -21,7 +21,7 @@ export class PokemonsService {
 			this.http.get<PokemonArray>('https://pokeapi.co/api/v2/pokemon')
 				.subscribe((pokemons) => {
 					 this.pokemons = pokemons.results
-					 sessionStorage.setItem('pokemons', JSON.stringify(this.pokemons))
+					 sessionStorage.setItem('pokemons', JSON.stringify(this.mapAvatarToPokemons(this.pokemons)))
 				}, (error: HttpErrorResponse) => {
 					this.error = error.message;
 				});
@@ -30,4 +30,13 @@ export class PokemonsService {
 	public getPokemons(): Pokemon[] {
 		return this.pokemons
 	}
+	public mapAvatarToPokemons(pokemons: Pokemon[]) {
+		return pokemons.map((p, index) => {
+			return {
+				...p,
+				id: index,
+				avatar: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + Number(1)}.png`
+			};
+		});
+	 }
 }

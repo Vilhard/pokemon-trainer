@@ -15,14 +15,4 @@ export class PokemonListComponent {
       get pokemons(): Pokemon[] {
           return this.pokemonService.getPokemons()
       }
-      //TODO
-     public setAvatarToPokemons(pokemons: Pokemon[]) {
-        return pokemons.map((p, index) => {
-             return {
-                 ...p,
-                 id: index,
-                 avatar: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`
-             };
-         });
-      }
 }
