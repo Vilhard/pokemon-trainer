@@ -4,6 +4,3 @@ export interface Pokemon {
 	url: string;
 	avatar: string;
 }
-export interface PokemonArray {
-	results: object;
-}
