@@ -7,7 +7,3 @@ export interface Pokemon {
 export interface PokemonArray {
 	results: object;
 }
-
-export interface PokemonResults {
-	pokemon: Pokemon
-}

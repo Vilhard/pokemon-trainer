@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseURL: 'https://noroff-assignment-api-frontend.herokuapp.com',
-  API_KEY: 'sdfdflsdnfsdklnfoiruourpgklfldkjhtrhirhreghkglndfnbnfllkdfjhgerl'
+  API_KEY: 'sdfdflsdnfsdklnfoiruourpgklfldkjhtrhirhreghkglndfnbnfllkdfjhgerl',
+  pokemonURL: 'https://pokeapi.co/api/v2/pokemon',
 };
 
 /*

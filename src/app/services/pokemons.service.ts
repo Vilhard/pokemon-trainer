@@ -1,13 +1,13 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http"
-import { Injectable } from "@angular/core"
-import {  Pokemon, PokemonArray } from "../models/pokemon.model"
+
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Pokemon, PokemonArray } from "../models/pokemon.model"
+
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class PokemonsService {
-
 	private pokemons: any = [] 
 	private error: string = ''
 
