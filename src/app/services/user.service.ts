@@ -79,6 +79,7 @@ export class UserService {
   public updateUser(user: User, onSuccess: () => void): void {
     this.patchUser(user)
     .subscribe((user: User) => {
+      this.sessionService.setUser(user);
       onSuccess();
     }),
     (error: HttpErrorResponse) => {
