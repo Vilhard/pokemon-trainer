@@ -81,10 +81,10 @@ export class UserService {
     return this._error;
   }
 
-  public updateUser(user: User, onSuccess: () => void): void {
-    this.patchUser(user).subscribe((user: User) => {
-      if(this.sessionService.user !== user) {
-        this.sessionService.setUser(user);
+  public updateUser(updatedUser: User, onSuccess: () => void): void {
+    this.patchUser(updatedUser).subscribe((returnedUser: User) => {
+      if(this.sessionService.user !== returnedUser) {
+        this.sessionService.setUser(returnedUser);
       }
 
       onSuccess();
