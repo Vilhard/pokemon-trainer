@@ -19,6 +19,9 @@ export class TrainerPage implements OnInit {
     return this.sessionService.user;
   }
 
-  ngOnInit(): void {
+  get pokemons(): Pokemon[] {
+    return this.sessionService.user?.pokemon!;
   }
+
+  ngOnInit(): void {}
 }
