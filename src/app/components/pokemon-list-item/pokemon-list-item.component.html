@@ -4,9 +4,9 @@
         <mat-card-title>
             {{pokemon.name}}
         </mat-card-title>
-        <mat-card-content [ngClass]="caught == false ? 'normal': 'greyedOut'">
+        <mat-card-content [ngClass]="caught == false ? 'normal': 'greyed-out'">
             <img src="{{pokemon.avatar}}" />
-            <img class="pokeball" src="../../../assets/pokeball.png" (click)="onCatchClick()"/>
+            <img [ngClass]="caught == false ? 'pokeball-normal': 'pokeball-grayed-out'" src="../../../assets/pokeball.png" (click)="onCatchClick()"/>
         </mat-card-content>
 </mat-card>
 </li>

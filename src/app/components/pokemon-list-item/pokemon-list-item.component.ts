@@ -28,13 +28,14 @@ export class PokemonListItemComponent {
     }
 
     public onCatchClick(): void {
-        this.sessionService.user?.pokemon.push(this.pokemon)
+        if(!this.caught) {
+            this.sessionService.user?.pokemon.push(this.pokemon)
 
-        if(this.sessionService.user !== undefined) {
-            this.userService.updateUser(this.sessionService.user, async() => {
-                await (this.caught = true);
-            })
+            if(this.sessionService.user !== undefined) {
+                this.userService.updateUser(this.sessionService.user, async() => {
+                    await (this.caught = true);
+                })
+            }
         }
-
     }
 }
