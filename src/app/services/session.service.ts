@@ -23,6 +23,9 @@ export class SessionService {
   get pokemons(): Pokemon[] | undefined {
     return this._user?.pokemon;
   }
+  get pagedPokemons(): Pokemon[]{
+    return [...this.user?.pokemon!];
+  }
 
   setUser(user: User): void {
     this._user = user;
