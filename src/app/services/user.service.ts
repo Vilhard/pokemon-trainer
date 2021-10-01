@@ -81,17 +81,15 @@ export class UserService {
     return this._error;
   }
 
-  public updateUser(updatedUser: User, onSuccess: () => void): void {
+  public updateUser(updatedUser: User): void {
     this.patchUser(updatedUser).subscribe((returnedUser: User) => {
       if(this.sessionService.user !== returnedUser) {
         this.sessionService.setUser(returnedUser);
       }
-
-      onSuccess();
     }),
-      (error: HttpErrorResponse) => {
-        this._error = error.message;
-      };
+    (error: HttpErrorResponse) => {
+      this._error = error.message;
+    };
   }
 
   public updateUsersPokemons(

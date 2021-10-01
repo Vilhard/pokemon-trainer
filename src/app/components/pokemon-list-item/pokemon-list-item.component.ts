@@ -14,6 +14,7 @@ export class PokemonListItemComponent {
   @Input() index!: number;
   @Input() isTrainerPage!: boolean;
   caught: boolean = false;
+  enableButton: boolean = true;
 
   constructor(
     private readonly userService: UserService,
@@ -33,14 +34,17 @@ export class PokemonListItemComponent {
     return this.userService.getUser();
   }
 
-  public onCatchClick(): void {
+  public onCatchClick(): void {    
     if (!this.caught) {
+      this.caught = true;
       this.sessionService.user?.pokemon.push(this.pokemon);
 
       if (this.sessionService.user !== undefined) {
-        this.userService.updateUser(this.sessionService.user, async () => {
-          await (this.caught = true);
-        });
+        this.userService.updateUser(this.sessionService.user);
+      }
+
+      if(this.userService.getError() !== "") {
+        this.caught = false
       }
     }
   }
