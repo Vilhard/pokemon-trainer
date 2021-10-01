@@ -3,6 +3,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 import { UserService } from 'src/app/services/user.service';
 import { User } from '../../models/user.model';
 import { SessionService } from 'src/app/services/session.service';
+import "animate.css"
 
 @Component({
   selector: 'app-pokemon-list-item',
@@ -14,7 +15,9 @@ export class PokemonListItemComponent {
   @Input() index!: number;
   @Input() isTrainerPage!: boolean;
   caught: boolean = false;
-  enableButton: boolean = true;
+  ballStyle = 'pokeball-normal';
+  picStyle = 'normal';
+  animationClass = 'animate__animated animate__bounceIn';
 
   constructor(
     private readonly userService: UserService,
@@ -22,11 +25,9 @@ export class PokemonListItemComponent {
   ) {}
 
   ngOnInit(): void {
-    if (
-      this.sessionService.user?.pokemon.find((x) => x.id === this.pokemon.id) !=
-      undefined
-    ) {
+    if (this.sessionService.user?.pokemon.find((x) => x.id === this.pokemon.id) !=undefined) {
       this.caught = true;
+      this.picStyle = !this.isTrainerPage ? 'greyed-out' : 'normal';
     }
   }
 
@@ -34,13 +35,19 @@ export class PokemonListItemComponent {
     return this.userService.getUser();
   }
 
-  public onCatchClick(): void {    
+  public onCatchClick(): void { 
     if (!this.caught) {
+      this.ballStyle = 'pokeball-normal '+this.animationClass
       this.caught = true;
       this.sessionService.user?.pokemon.push(this.pokemon);
 
       if (this.sessionService.user !== undefined) {
-        this.userService.updateUser(this.sessionService.user);
+        this.userService.updateUser(this.sessionService.user, async () => {
+          await (
+            this.ballStyle = 'pokeball-grayed-out '+this.animationClass,
+            this.picStyle = 'greyed-out'
+            )
+        });
       }
 
       if(this.userService.getError() !== "") {
