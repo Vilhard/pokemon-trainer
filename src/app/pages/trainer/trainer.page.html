@@ -1,3 +1,7 @@
-<h2>Welcome {{user?.username}} to yur profile!</h2>
-
-<app-pokemon-list [pokemons]="pokemons" [isTrainerPage]="true"></app-pokemon-list>
+<app-nav-bar></app-nav-bar>
+<main>
+  <div class="container mt-2">
+    <h2>Your Pokémons:</h2>
+    <app-pokemon-list [pokemons]="pokemons" [isTrainerPage]="true"></app-pokemon-list>
+  </div>
+</main>
