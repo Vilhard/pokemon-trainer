@@ -18,7 +18,7 @@ export class PokemonsService {
 		if(sessionStorage.getItem("pokemons")){
 			return this.pokemons = JSON.parse(sessionStorage.getItem("pokemons") || '{}');
 		} else {
-			this.http.get<any>('https://pokeapi.co/api/v2/pokemon')
+			this.http.get<any>('https://pokeapi.co/api/v2/pokemon?limit=151')
 				.subscribe((pokemons) => {
 					this.pokemons =this.mapAvatarToPokemons(pokemons.results)
 					 sessionStorage.setItem('pokemons', JSON.stringify(this.pokemons))
