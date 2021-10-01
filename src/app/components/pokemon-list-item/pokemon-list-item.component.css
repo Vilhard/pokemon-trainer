@@ -1,24 +1,24 @@
 .card-container {
-    text-align: center;
-    margin: 1rem;
-    background-color: beige;
-    width: 8rem;
-    box-shadow: 0 0 0.5rem 0.3rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin: 1rem;
+  background-color: beige;
+  width: 8rem;
+  box-shadow: 0 0 0.5rem 0.3rem rgba(0, 0, 0, 0.2);
 }
 
 .pokeball-normal:hover {
-    opacity: 0.5;
-    filter: brightness(100%);
+  opacity: 0.5;
+  filter: brightness(100%);
 }
 
 .pokeball-grayed-out {
-    filter: brightness(100%);
+  filter: brightness(100%);
 }
 
 .greyed-out {
-    filter: brightness(30%);
+  filter: brightness(30%);
 }
 
 .normal {
-    filter: brightness(100%);
+  filter: brightness(100%);
 }

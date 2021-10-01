@@ -50,7 +50,6 @@ export class PokemonListItemComponent {
   }
 
   public onFreeClick(): void {
-    console.log(this.pokemon);
     this.userService.updateUsersPokemons(
       // Getting the current user
       this.sessionService.user!,

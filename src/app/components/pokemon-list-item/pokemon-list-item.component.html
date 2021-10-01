@@ -4,7 +4,7 @@
             {{pokemon.name}}
         </mat-card-title>
 
-        <mat-card-content [ngClass]="caught == false || isTrainerPage ? 'normal': 'greyedOut'">
+        <mat-card-content [ngClass]="caught == false || isTrainerPage ? 'normal': 'greyed-out'">
             <img src="{{pokemon.avatar}}" />
             <img [ngClass]="caught == false ? 'pokeball-normal': 'pokeball-grayed-out'"
                 src="../../../assets/pokeball.png" *ngIf="!isTrainerPage" (click)="onCatchClick()"/>
