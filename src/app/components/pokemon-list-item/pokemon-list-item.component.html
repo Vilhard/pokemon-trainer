@@ -3,14 +3,13 @@
         {{pokemon.name}}
     </mat-card-title>
 
-        <mat-card-content [ngClass]="[picStyle]">
-            <img src="{{pokemon.avatar}}" alt="{{pokemon.name}}'s image"/>
-                  </mat-card-content>
+    <mat-card-content [ngClass]="[picStyle]">
+        <img src="{{pokemon.avatar}}" alt="{{pokemon.name}}'s image" />
+    </mat-card-content>
     <mat-card-actions class="mb-2">
-            <img [ngClass]="[ballStyle]"
-                src="../../../assets/pokeball.png" *ngIf="!isTrainerPage" (click)="onCatchClick()"/>
-            <button class="btn btn-sm btn-outline-secondary" *ngIf="isTrainerPage" (click)="onFreeClick()">Free the
-                Pokémon</button>
+        <img [ngClass]="[ballStyle]" src="../../../assets/pokeball.png" *ngIf="!isTrainerPage"
+            (click)="onCatchClick()" />
+        <button class="btn btn-sm btn-outline-secondary" *ngIf="isTrainerPage" (click)="onFreeClick()">Free the
+            Pokémon</button>
     </mat-card-actions>
-    </mat-card>
-</li>
+</mat-card>
