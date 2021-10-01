@@ -13,7 +13,7 @@
 			<a class="nav-link" [routerLink]="['/catalogue']" routerLinkActive="active" href="#">Catalogue</a>
 		</li>
 		</ul>
-		<span class="navbar-text" *ngIf="user !== undefined">You are logged in as {{user?.username}}</span>
+		<span class="navbar-text" *ngIf="user !== undefined">You are logged in as {{user?.username}} </span>
 		<button class="btn btn-sm btn-outline-secondary" [disabled]="user === undefined" (click)="onLogoutClick()">Log out</button>
 	  </div>
 	</div>

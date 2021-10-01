@@ -3,8 +3,10 @@
         <mat-card-title>
             {{pokemon.name}}
         </mat-card-title>
+
         <mat-card-content [ngClass]="caught == false || isTrainerPage ? 'normal': 'greyedOut'">
             <img src="{{pokemon.avatar}}" />
+      <img [ngClass]="caught == false ? 'pokeball-normal': 'pokeball-grayed-out'" src="../../../assets/pokeball.png" *ngIf="!isTrainerPage" (click)="onCatchClick()"/>
             <img class="pokeball" src="../../../assets/pokeball.png" *ngIf="!isTrainerPage" (click)="onCatchClick()" />
             <button class="btn btn-sm btn-outline-secondary" *ngIf="isTrainerPage" (click)="onFreeClick()">Free the
                 Pokémon</button>
