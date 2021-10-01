@@ -1,9 +1,5 @@
 main {
   height: 100%;
-  background-color: bisque;
-}
-ul {
-  list-style-type: none;
 }
 .flex-container {
   display: flex;
@@ -12,9 +8,8 @@ ul {
   margin: auto;
 }
 .pagination {
-  font-size: 1.4rem;
+  font-size: 0.7rem;
   justify-content: center;
-  width: 100%;
-  position:fixed;
-  bottom:0;
+  max-width: 100%;
+  bottom: 0;
 }

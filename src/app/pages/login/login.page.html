@@ -1,19 +1,16 @@
-<div class="container">
-	<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-		<fieldset>
-			<div class="form-group mb-2">
-				<label class="form-label" for="username">Create new trainer</label>
-				<input type="text" 
-					class="form-control"
-					id="username" 
-					name="username" 
-					required
-					ngModel #username="ngModel"/>
-			</div>
-			<button class="btn btn-primary mb-2" type="submit" [disabled] ="loginForm.invalid">Login</button>
-		</fieldset>
-	</form>
-</div>
-
-
-
+<main>
+	<div class="container">
+		<h1 class="mt-3">Welcome Pokémon trainer!</h1>
+		<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+			<fieldset>
+				<div class="form-group mb-2">
+					<label class="form-label" for="username">Enter your username to continue</label>
+					<input type="text" class="form-control" id="username" name="username" required ngModel #username="ngModel"
+						placeholder="ash" />
+				</div>
+				<button class="btn mb-2" type="submit" [disabled]="loginForm.invalid">Login</button>
+			</fieldset>
+		</form>
+		<img class="image" src="../../../assets/logo.png" />
+	</div>
+</main>
