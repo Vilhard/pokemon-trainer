@@ -4,3 +4,4 @@ export interface Pokemon {
 	url: string;
 	avatar: string;
 }
+

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { UserService } from 'src/app/services/user.service';
 import { User } from '../../models/user.model';
@@ -46,6 +46,7 @@ export class PokemonListItemComponent {
   }
 
   public onFreeClick(): void {
+    console.log(this.pokemon);
     this.userService.updateUsersPokemons(
       // Getting the current user
       this.sessionService.user!,

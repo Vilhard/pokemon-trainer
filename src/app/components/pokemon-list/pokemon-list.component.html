@@ -1,8 +1,20 @@
 <router-outlet></router-outlet>
 <main>
   <ul class="flex-container">
-    <app-pokemon-list-item *ngFor="let pokemon of pokemons; let i = index" [pokemon]="pokemon" [index]="i"
-      [isTrainerPage]="isTrainerPage">
+    <app-pokemon-list-item
+      *ngFor="let pokemon of pageOfPokemons"
+      [pokemon]="pokemon"
+      [isTrainerPage]="isTrainerPage"
+    >
     </app-pokemon-list-item>
   </ul>
+  <footer class="pagination">
+    <div>
+      <jw-pagination
+        [items]="pokemons!"
+        [pageSize]="25"
+        (changePage)="onChangePage($event)"
+      ></jw-pagination>
+    </div>
+  </footer>
 </main>
