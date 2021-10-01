@@ -14,6 +14,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
+import { JwPaginationModule } from 'jw-angular-pagination';
 import { TrainerPokemonListComponent } from './components/trainer-pokemon-list/trainer-pokemon-list.component';
 import { TrainerPokemonListItemComponent } from './components/trainer-pokemon-list-item/trainer-pokemon-list-item.component';
 
@@ -36,7 +37,8 @@ import { TrainerPokemonListItemComponent } from './components/trainer-pokemon-li
     FormsModule,
     NoopAnimationsModule,
     MatCardModule,
-    RouterModule
+    RouterModule,
+    JwPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
