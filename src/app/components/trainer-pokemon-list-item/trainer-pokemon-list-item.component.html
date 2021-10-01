@@ -1,3 +1,11 @@
-<li>{{pokemon?.name}}</li>
-<img src="{{pokemon?.avatar}}" alt="Image of {{pokemon?.name}}" />
-<button (click)=onFreePokemonClicked()>Free the Pokémon</button>
+<li>
+  <mat-card class="card-container">
+    <mat-card-title>
+      {{pokemon.name}}
+    </mat-card-title>
+    <mat-card-content>
+      <img src="{{pokemon.avatar}}" />
+      <button class="btn btn-sm btn-outline-secondary" (click)="onFreeClick()">Free the Pokémon</button>
+    </mat-card-content>
+  </mat-card>
+</li>

@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { SessionService } from 'src/app/services/session.service';
+import { Pokemon } from '../models/pokemon.model';
 
 const API_URL = environment.baseURL;
 const API_KEY = environment.API_KEY;
@@ -53,7 +54,7 @@ export class UserService {
 
     return this.http.post<User>(API_URL + '/trainers', body, httpOptions);
   }
-  
+
   public patchUser(user: User): Observable<User> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -65,7 +66,11 @@ export class UserService {
     const body = JSON.stringify({
       pokemon: user.pokemon,
     });
-    return this.http.patch<User>(API_URL + '/trainers/'+user.id, body, httpOptions);
+    return this.http.patch<User>(
+      API_URL + '/trainers/' + user.id,
+      body,
+      httpOptions
+    );
   }
 
   public getUser(): User {
@@ -77,14 +82,28 @@ export class UserService {
   }
 
   public updateUser(user: User, onSuccess: () => void): void {
-    this.patchUser(user)
-    .subscribe((user: User) => {
+    this.patchUser(user).subscribe((user: User) => {
       this.sessionService.setUser(user);
       onSuccess();
     }),
-    (error: HttpErrorResponse) => {
-      this._error = error.message;
-    }
+      (error: HttpErrorResponse) => {
+        this._error = error.message;
+      };
+  }
+
+  public updateUsersPokemons(
+    user: User,
+    pokemon: Pokemon[],
+    onSuccess: () => void
+  ): void {
+    user.pokemon = pokemon;
+    this.patchUser(user).subscribe((user: User) => {
+      this.sessionService.setUser(user);
+      onSuccess();
+    }),
+      (error: HttpErrorResponse) => {
+        this._error = error.message;
+      };
   }
 
   public authenticate(username: string, onSuccess: () => void): void {
@@ -108,5 +127,5 @@ export class UserService {
           this._error = error.message;
         }
       );
-    }
+  }
 }
