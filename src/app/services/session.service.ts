@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { Router } from '@angular/router';
+import { Pokemon } from '../models/pokemon.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SessionService {
-	private _user: User | undefined;
+  private _user: User | undefined;
 
   constructor(private readonly router: Router) {
     const storedUser = localStorage.getItem('user');
@@ -17,6 +18,10 @@ export class SessionService {
 
   get user(): User | undefined {
     return this._user;
+  }
+
+  get pokemons(): Pokemon[] | undefined {
+    return this._user?.pokemon;
   }
 
   setUser(user: User): void {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -14,8 +14,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
-import { TrainerPokemonListComponent } from './components/trainer-pokemon-list/trainer-pokemon-list.component';
-import { TrainerPokemonListItemComponent } from './components/trainer-pokemon-list-item/trainer-pokemon-list-item.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +21,9 @@ import { TrainerPokemonListItemComponent } from './components/trainer-pokemon-li
     LoginPage,
     TrainerPage,
     CataloguePage,
-    TrainerPokemonListComponent,
-    TrainerPokemonListItemComponent,
     PokemonListComponent,
     PokemonListItemComponent,
-    NavBarComponent
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +32,9 @@ import { TrainerPokemonListItemComponent } from './components/trainer-pokemon-li
     FormsModule,
     NoopAnimationsModule,
     MatCardModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
