@@ -35,6 +35,7 @@ export class PokemonListItemComponent {
 
   public onCatchClick(): void {
     if (!this.caught) {
+      this.caught = true;
       this.sessionService.user?.pokemon.push(this.pokemon);
 
       if (this.sessionService.user !== undefined) {
@@ -46,7 +47,6 @@ export class PokemonListItemComponent {
   }
 
   public onFreeClick(): void {
-    console.log(this.pokemon);
     this.userService.updateUsersPokemons(
       // Getting the current user
       this.sessionService.user!,
