@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/session.service';
 import { User } from '../../models/user.model'
+import "animate.css"
 
 @Component({
   selector: 'app-catalogue',
