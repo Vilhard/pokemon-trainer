@@ -15,7 +15,7 @@ This project is a Pokémon trainer web application created using Angular Framewo
 
 ## Project setup
 ### Project and trainers api are deployed to Heroku
-[Heroku app](somelinkhere)
+[Heroku app](https://fathomless-beyond-46061.herokuapp.com/login)
 <br>
 [Trainers Api](https://noroff-assignment-api-frontend.herokuapp.com/trainers)
 
