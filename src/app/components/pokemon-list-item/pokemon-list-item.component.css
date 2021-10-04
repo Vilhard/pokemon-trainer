@@ -11,7 +11,7 @@
 }
 
 .pokeball-grayed-out {
-  filter: brightness(100%);
+  filter: brightness(30%);
 }
 
 .greyed-out {

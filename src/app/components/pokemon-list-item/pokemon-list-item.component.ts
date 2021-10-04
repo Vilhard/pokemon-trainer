@@ -32,6 +32,7 @@ export class PokemonListItemComponent {
     ) {
       this.caught = true;
       this.picStyle = !this.isTrainerPage ? 'greyed-out' : 'normal';
+      this.ballStyle = 'pokeball-grayed-out ';
     }
   }
 
