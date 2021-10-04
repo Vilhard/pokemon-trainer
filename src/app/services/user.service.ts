@@ -80,11 +80,14 @@ export class UserService {
     return this._error;
   }
 
+  // handling patchUser result
   public updateUser(updatedUser: User, onSuccess: () => void): void {
     this.patchUser(updatedUser).subscribe((returnedUser: User) => {
+      // if current user's state differs from returned user, update user state
       if (this.sessionService.user !== returnedUser) {
         this.sessionService.setUser(returnedUser);
       }
+      // execute callback function
       onSuccess();
     }),
       (error: HttpErrorResponse) => {
@@ -92,6 +95,7 @@ export class UserService {
       };
   }
 
+  // handling patchUser result
   public updateUsersPokemons(
     user: User,
     pokemon: Pokemon[],
@@ -109,20 +113,26 @@ export class UserService {
       };
   }
 
+  // handling fetchByUserName result
   public authenticate(username: string, onSuccess: () => void): void {
     this.fetchByUsername(username)
       .pipe(
+        // map result
         switchMap((users: User[]) => {
-          if (users.length) {
+          // if users has data, return first user
+          if (users.length) {      
             return of(users[0]);
           }
+          // if users array is empty, add new user
           return this.addUser(username);
         })
-      )
+      ) 
       .subscribe(
+        // set user state
         (user: User) => {
           if (user.id) {
             this.sessionService.setUser(user);
+            // execute callback function
             onSuccess();
           }
         },
