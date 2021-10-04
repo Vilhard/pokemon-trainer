@@ -10,7 +10,6 @@ import { PokemonsService } from 'src/app/services/pokemons.service';
 export class PokemonListComponent implements OnInit {
   @Input() pokemons: Pokemon[] | undefined;
   @Input() isTrainerPage: boolean = false;
-  pokemonsPagination: Pokemon[] = [];
   pageOfPokemons: Array<any> | undefined;
 
   constructor(private readonly pokemonService: PokemonsService) {}

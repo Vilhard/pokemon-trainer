@@ -14,6 +14,7 @@ export class PokemonsService {
 	constructor(private readonly http: HttpClient) {
 	}
 
+	//fetch pokemons from API if sessionStorage is empty and adds result to sessionStorage
 	public fetchPokemons(): void {
 		if(sessionStorage.getItem("pokemons")){
 			return this.pokemons = JSON.parse(sessionStorage.getItem("pokemons") || '{}');
