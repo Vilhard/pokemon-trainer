@@ -51,7 +51,6 @@ export class UserService {
       username: username,
       pokemon: [],
     });
-
     return this.http.post<User>(API_URL + '/trainers', body, httpOptions);
   }
 
@@ -83,14 +82,14 @@ export class UserService {
 
   public updateUser(updatedUser: User, onSuccess: () => void): void {
     this.patchUser(updatedUser).subscribe((returnedUser: User) => {
-      if(this.sessionService.user !== returnedUser) {
+      if (this.sessionService.user !== returnedUser) {
         this.sessionService.setUser(returnedUser);
       }
       onSuccess();
     }),
-    (error: HttpErrorResponse) => {
-      this._error = error.message;
-    };
+      (error: HttpErrorResponse) => {
+        this._error = error.message;
+      };
   }
 
   public updateUsersPokemons(
@@ -98,8 +97,10 @@ export class UserService {
     pokemon: Pokemon[],
     onSuccess: () => void
   ): void {
+    // Set updated Pokemon array to users Pokemons
     user.pokemon = pokemon;
     this.patchUser(user).subscribe((user: User) => {
+      // Update the value also to the session service
       this.sessionService.setUser(user);
       onSuccess();
     }),

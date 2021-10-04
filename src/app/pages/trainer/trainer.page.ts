@@ -15,10 +15,12 @@ export class TrainerPage implements OnInit {
     private readonly sessionService: SessionService
   ) {}
 
+  // Fetching user from the session service
   get user(): User | undefined {
     return this.sessionService.user;
   }
 
+  // Fetching user's pokemons from the session service
   get pokemons(): Pokemon[] {
     return this.sessionService.user?.pokemon!;
   }

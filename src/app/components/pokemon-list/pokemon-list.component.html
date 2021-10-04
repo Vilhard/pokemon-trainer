@@ -1,6 +1,7 @@
 <router-outlet></router-outlet>
 <main>
   <div class="flex-container">
+    <!--Looping the list of Pokémons, ad passing the current pokemon to app-pokemon-list-item-->
     <app-pokemon-list-item *ngFor="let pokemon of pageOfPokemons" [pokemon]="pokemon" [isTrainerPage]="isTrainerPage">
     </app-pokemon-list-item>
   </div>
